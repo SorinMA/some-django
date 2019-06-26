@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a57250a4-3250-4110-9538-88cfb61a0c80" name="Default Changelist" comment="" />
+    <list default="true" id="a57250a4-3250-4110-9538-88cfb61a0c80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/web_app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sm_user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sm_user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sm_user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sm_user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sm_user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sm_user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sm_user/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sm_user/home_page.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,22 +17,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_demo_web/settings.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sm_user/home_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="123" selection-start-line="123" selection-end-line="123" />
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_demo_web/urls.py">
+        <entry file="file://$PROJECT_DIR$/templates/web_app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            <state relative-caret-position="614">
+              <caret line="48" column="10" lean-forward="true" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sm_user/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="81" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
               <folding>
-                <element signature="e#647#686#0" expanded="true" />
+                <element signature="e#24#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -34,36 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sm_user/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/sm_user/home_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="37" selection-start-column="37" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/web_app_template.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-              <folding>
-                <element signature="e#2565#2572#0" expanded="true" />
-                <element signature="e#3080#3087#0" expanded="true" />
-                <element signature="e#3495#3502#0" expanded="true" />
-                <element signature="e#3920#3927#0" expanded="true" />
-                <element signature="e#4003#4009#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -71,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sm_user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            <state relative-caret-position="45">
+              <caret line="3" column="35" lean-forward="true" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -82,15 +70,20 @@
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test_demo_web/urls.py" />
-        <option value="$PROJECT_DIR$/sm_user/urls.py" />
-        <option value="$PROJECT_DIR$/templates/sm_user/home_page.html" />
-        <option value="$PROJECT_DIR$/sm_user/views.py" />
         <option value="$PROJECT_DIR$/templates/web_app_template.html" />
         <option value="$PROJECT_DIR$/test_demo_web/settings.py" />
+        <option value="$PROJECT_DIR$/sm_user/urls.py" />
+        <option value="$PROJECT_DIR$/sm_user/views.py" />
+        <option value="$PROJECT_DIR$/templates/sm_user/home_page.html" />
+        <option value="$PROJECT_DIR$/templates/web_app.html" />
+        <option value="$PROJECT_DIR$/sm_user/models.py" />
       </list>
     </option>
   </component>
@@ -100,6 +93,7 @@
     <option name="width" value="1127" />
     <option name="height" value="772" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -127,6 +121,12 @@
               <item name="test_demo_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="test_demo_web" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test_demo_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test_demo_web" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="sm_user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="test_demo_web" type="b2602c69:ProjectViewProjectNode" />
@@ -182,7 +182,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" weight="0.32970452" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.11017838" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.21556257" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -200,44 +200,13 @@
     <entry file="file://$PROJECT_DIR$/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sm_user/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/templates/sm_user/web_app.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/web_app_template.html">
+    <entry file="file://$PROJECT_DIR$/test_demo_web/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-          <folding>
-            <element signature="e#2565#2572#0" expanded="true" />
-            <element signature="e#3080#3087#0" expanded="true" />
-            <element signature="e#3495#3502#0" expanded="true" />
-            <element signature="e#3920#3927#0" expanded="true" />
-            <element signature="e#4003#4009#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sm_user/home_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="37" selection-start-column="37" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sm_user/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="721">
+          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
         </state>
       </provider>
     </entry>
@@ -251,10 +220,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_demo_web/settings.py">
+    <entry file="file://$PROJECT_DIR$/sm_user/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="123" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sm_user/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="35" lean-forward="true" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/web_app_template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="48" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sm_user/home_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/web_app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="48" column="10" lean-forward="true" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sm_user/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="81" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
