@@ -9,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
 
 import requests
+
+from time import gmtime, strftime
 # Create your views here.
 
 
@@ -37,7 +39,7 @@ def stock_page(request):
         euro_to_chf = 0
 
 
-    return render(request, 'sm_user/stock_page.html', {'user': request.user, 'date' : date, 'RON' : euro_to_ron, 'USD' : euro_to_usd, 'CHF' : euro_to_chf})
+    return render(request, 'sm_user/stock_page.html', {'user': request.user, 'date' : date, 'RON' : euro_to_ron, 'USD' : euro_to_usd, 'CHF' : euro_to_chf, 'value' : strftime("%Y-%m-%d %H:%M:%S", gmtime())})
 
 def home_page(request):
     return render(request, 'sm_user/home_page.html', {'user' : request.user})
