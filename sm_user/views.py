@@ -3,26 +3,41 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 
-from django.contrib.sites.shortcuts import get_current_site
 
 from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
 
-from django.utils.encoding import force_bytes
-
-from django.utils.http import urlsafe_base64_encode
-
-from django.template.loader import render_to_string
-
-
-
+import requests
 # Create your views here.
 
 
 @login_required()
 def stock_page(request):
-    return render(request, 'sm_user/stock_page.html', {'user': request.user})
+    response = requests.get('https://api.exchangeratesapi.io/latest')
+    curency = response.json()
+    try:
+        date = curency['date']
+    except:
+        date = '--/--/----'
+
+    try:
+        euro_to_ron = (curency['rates'])['RON']
+    except:
+        euro_to_ron = 0
+
+    try:
+        euro_to_usd = (curency['rates'])['USD']
+    except:
+        euro_to_usd = 0
+
+    try:
+        euro_to_chf = (curency['rates'])['CHF']
+    except:
+        euro_to_chf = 0
+
+
+    return render(request, 'sm_user/stock_page.html', {'user': request.user, 'date' : date, 'RON' : euro_to_ron, 'USD' : euro_to_usd, 'CHF' : euro_to_chf})
 
 def home_page(request):
     return render(request, 'sm_user/home_page.html', {'user' : request.user})
