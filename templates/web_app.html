@@ -35,11 +35,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            {% if not user.is_authenticated %}
+            {% if not user.is_authenticated %}home_page
                 <a class="navbar-brand" href="{% url 'home_page' %}">Stock Expert</a>
-                <a class="navbar-brand" href="{% url 'sm_login' %}">Login</a>
             {%endif%}
         </div>
+          <div id="navbar" class="navbar-collapse collapse">>
+                    {% block contentTOP %}
+
+                    {% endblock %}
+          </div>
 
       </div>
     </nav>

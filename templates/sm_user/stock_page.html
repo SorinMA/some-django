@@ -1,18 +1,16 @@
 {% extends "web_app.html" %}
 
-
 {% block contentTOP %}
-
-        <a class="navbar-brand" href="{% url 'sm_login' %}">Login</a>
-
+    <div   class="navbar-form navbar-right">
+        <a class="navbar-brand" href="{% url 'sm_logout' %}">Logout</a>
+    </div>
 {% endblock %}
 
 {% block content %}
      <!-- Main jumbotron for a primary marketing message or call to action -->
-
         <div class="jumbotron">
           <div class="container">
-            <h2>Welcome to Stock Expert!</h2>
+            <h2>Welcome {{user.username}}</h2>
             <p>
                 Managing your own investments is like performing surgery on yourself. Most people don’t know how to invest,
                 let alone when to buy and when to sell. Our expert financial analysts and editors do the heavy lifting for
@@ -22,7 +20,6 @@
 
           </div>
         </div>
-
 
 
 {% endblock %}

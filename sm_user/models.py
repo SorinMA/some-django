@@ -12,6 +12,6 @@ class StockExpert(models.Model):
     stock_player_revenue = models.FloatField()
 
 class StockMarket(models.Model):
-    stock_evolution = models.FloatField()
+    stock_evolution = models.FloatField(null=False, default=0)
     stock_expert_player = models.ForeignKey(StockExpert, on_delete=models.CASCADE)
 
