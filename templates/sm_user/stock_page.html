@@ -94,22 +94,24 @@
                     td.appendChild(document.createTextNode(api_values[j]['USD']));
                   if(i == 3)
                     td.appendChild(document.createTextNode(api_values[j]['CHF']));
-                  if(i == 4) {
+                  if(i == 4)
+                    td.appendChild(document.createTextNode('info:'+api_values[j]['message']));
+                  if(i == 5) {
                      var clickMeButton = document.createElement('button');
                     clickMeButton.id = 'deleteButton'+j;
                     clickMeButton.innerHTML = 'Delete This' + j;
 
 
-                    clickMeButton.onclick = new Function('delete_this' + j, 'api_values.splice('+j+',1); increment --;addTable(api_values,6,'+'\''+'myDynamicTable'+'\''+');');
+                    clickMeButton.onclick = new Function('delete_this' + j, 'api_values.splice('+j+',1); increment --;addTable(api_values,7,'+'\''+'myDynamicTable'+'\''+');');
                     td.appendChild(clickMeButton);
                   }
-                  if(i == 5) {
+                  if(i == 6) {
                     var clickMeButton = document.createElement('button');
                     clickMeButton.id = 'addButton'+j;
                     clickMeButton.innerHTML = 'Add This' + j;
 
 
-                    clickMeButton.onclick = new Function('add_this' + j, 'let set = 0;for (let k = 0 ; k < api_values_stored.length ; k += 1) { if( 0 == api_values['+j+']['+'\''+'value'+'\''+'].localeCompare(api_values_stored[k]['+'\''+'value'+'\''+'])){set = 1;break;}} if(set == 0) { if(api_values_stored.length > 20) api_values_stored.shift(); api_values_stored.push(api_values['+j+']); addTable(api_values_stored, 4, '+'\''+'dataStored'+'\''+'); }');
+                    clickMeButton.onclick = new Function('add_this' + j, 'let set = 0;for (let k = 0 ; k < api_values_stored.length ; k += 1) { if( 0 == api_values['+j+']['+'\''+'value'+'\''+'].localeCompare(api_values_stored[k]['+'\''+'value'+'\''+'])){set = 1;break;}} if(set == 0) { if(api_values_stored.length > 20) api_values_stored.shift(); api_values_stored.push(api_values['+j+']); addTable(api_values_stored, 5, '+'\''+'dataStored'+'\''+'); }');
                     td.appendChild(clickMeButton);
                   }
                   tr.appendChild(td);
@@ -137,13 +139,14 @@
                     document.querySelector('.date .value_date').innerHTML = data['value'];
                     curencyChart(data['RON'], data['USD'], data['CHF']);
                     increment ++;
+                    data['message'] = '';
                     if( api_values.length >= 10) {
                     api_values.shift();
                     api_values.push(data);
                     } else {
                     api_values.push(data);
                     }
-                    addTable(api_values,6,"myDynamicTable");
+                    addTable(api_values,7,"myDynamicTable");
                   })
                   .catch(function(error) {
                     console.log(error);
