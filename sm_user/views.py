@@ -11,11 +11,17 @@ from .forms import SignUpForm
 import requests
 
 from time import gmtime, strftime
+
+from django.http import JsonResponse
 # Create your views here.
 
 
 @login_required()
 def stock_page(request):
+    return render(request, 'sm_user/stock_page.html', {'user': request.user})
+
+@login_required()
+def stock_page_api(request):
     response = requests.get('https://api.exchangeratesapi.io/latest')
     curency = response.json()
     try:
@@ -38,8 +44,9 @@ def stock_page(request):
     except:
         euro_to_chf = 0
 
+    data = {'date' : date, 'RON' : euro_to_ron, 'USD' : euro_to_usd, 'CHF' : euro_to_chf, 'value' : strftime("%Y-%m-%d %H:%M:%S", gmtime())}
+    return JsonResponse(data, safe=False)
 
-    return render(request, 'sm_user/stock_page.html', {'user': request.user, 'date' : date, 'RON' : euro_to_ron, 'USD' : euro_to_usd, 'CHF' : euro_to_chf, 'value' : strftime("%Y-%m-%d %H:%M:%S", gmtime())})
 
 def home_page(request):
     return render(request, 'sm_user/home_page.html', {'user' : request.user})

@@ -1,5 +1,7 @@
 {% extends "web_app.html" %}
 
+
+
 {% block contentTOP %}
     <div   class="navbar-form navbar-right">
         <a class="navbar-brand" href="{% url 'sm_logout' %}">Logout</a>
@@ -7,11 +9,9 @@
 {% endblock %}
 
 {% block content %}
-<div >
 
-     <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
-          <div class="container" >
+
             <h2>Welcome {{user.username}}</h2>
             <p>
                 Managing your own investments is like performing surgery on yourself. Most people don’t know how to invest,
@@ -19,27 +19,102 @@
                 you, covering every facet of investing including stocks to buy for retirement, monthly income-payers,
                 marijuana stocks and even the pink sheets. With our advice, you can live your best financial life.
             </p>
-              <li>{{ date }}</li>
-             <li>{{ RON }}</li>
-               <li>{{ USD }}</li>
-               <li>{{ CHF }}</li>
-                <li>{{ value }}</li>
 
-              <div id="new">
-              <table  class="table table-striped table-condensed">
-                  <tr>
-                    <th>{{ date }}</th>
-                    <th>{{ RON }}</th>
-                    <th>{{ USD }}</th>
-                    <th>{{ CHF }}</th>
-                      <th>{{ value }}</th>
-                  </tr>
 
-                </table>
-              </div>
 
-          </div>
         </div>
 
-</div>
+        <script>
+
+        function curencyChart(value_RON, value_USD, value_CHF) {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+
+            title:{
+                text:"Curency"
+            },
+            axisX:{
+                interval: 1
+            },
+            axisY2:{
+                interlacedColor: "rgba(1,77,101,.2)",
+                gridColor: "rgba(1,77,101,.1)",
+                title: "1 EURO is:"
+            },
+            data: [{
+                type: "bar",
+                name: "companies",
+                axisYType: "secondary",
+                color: "#014D65",
+                dataPoints: [
+                    { y: value_RON, label: "RON" },
+                    { y: value_USD, label: "USD" },
+                    { y: value_CHF, label: "CHF" }
+                ]
+            }]
+        });
+        chart.render();
+
+        }
+        </script>
+
+        <script>
+               function getDataStock(){
+                  const url = '{% url 'stock_page_api'%}';
+                  fetch(url)
+                  .then((resp) => resp.json())
+                  .then(function(data) {
+                    document.querySelector('.api_date .value_api_date').innerHTML = data['date'];
+                    document.querySelector('.RON .value_RON').innerHTML = data['RON'];
+                    document.querySelector('.USD .value_USD').innerHTML = data['USD'];
+                    document.querySelector('.CHF .value_CHF').innerHTML = data['CHF'];
+                    document.querySelector('.date .value_date').innerHTML = data['value'];
+                    curencyChart(data['RON'], data['USD'], data['CHF']);
+                  })
+                  .catch(function(error) {
+                    console.log(error);
+                  });
+              }
+
+        </script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript">
+        getDataStock();
+        $(document).ready(function(){
+            setInterval('getDataStock()', 300 * 1000);
+        });
+        </script>
+
+
+
+
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+        <table  class="table table-striped table-condensed">
+                  <tr>
+                      <th>
+                          <div class="api_date"><span class='value_api_date'></span></div>
+                      </th>
+
+                      <th>
+                          <div class="RON"><span class='value_RON'></span></div>
+                      </th>
+
+                      <th>
+                          <div class="USD"><span class='value_USD'></span></div>
+                      </th>
+
+                      <th>
+                          <div class="CHF"><span class='value_CHF'></span></div>
+                      </th>
+
+                      <th>
+                          <div class="date"><span class='value_date'></span></div>
+                      </th>
+                  </tr>
+
+        </table>
+
 {% endblock %}
