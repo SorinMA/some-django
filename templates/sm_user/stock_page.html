@@ -102,7 +102,7 @@
                     clickMeButton.innerHTML = 'Delete This' + j;
 
 
-                    clickMeButton.onclick = new Function('delete_this' + j, 'api_values.splice('+j+',1); increment --;addTable(api_values,7,'+'\''+'myDynamicTable'+'\''+');');
+                    clickMeButton.onclick = new Function('delete_this' + j, 'api_values.splice('+j+',1); increment --;addTable(api_values,8,'+'\''+'myDynamicTable'+'\''+');');
                     td.appendChild(clickMeButton);
                   }
                   if(i == 6) {
@@ -113,6 +113,19 @@
 
                     clickMeButton.onclick = new Function('add_this' + j, 'let set = 0;for (let k = 0 ; k < api_values_stored.length ; k += 1) { if( 0 == api_values['+j+']['+'\''+'value'+'\''+'].localeCompare(api_values_stored[k]['+'\''+'value'+'\''+'])){set = 1;break;}} if(set == 0) { if(api_values_stored.length > 20) api_values_stored.shift(); api_values_stored.push(api_values['+j+']); addTable(api_values_stored, 5, '+'\''+'dataStored'+'\''+'); }');
                     td.appendChild(clickMeButton);
+                  }
+                  if(i == 7) {
+                   var inField = document.createElement("INPUT");
+                   inField.setAttribute("type", "text");
+                   inField.setAttribute("id", "myText"+j)
+                   inField.setAttribute("value", "");
+                   td.appendChild(inField);
+                   var buttonMsg = document.createElement("button");
+                   buttonMsg.id = 'msg'+j;
+                   buttonMsg.innerHTML = 'add info';
+                    //var x = document.getElementById( '+'\''+'myText'+'\''+'+'+j+').value; //api_values['+j+']['message'] = x;
+                   buttonMsg.onclick = new Function('fctAddMsg'+j,'let msg = document.getElementById( '+'\''+'myText'+'\''+'+'+j+').value; console.log(msg); api_values['+j+'][ '+'\''+ 'message'+'\''+'] = msg; for (let k = 0 ; k < api_values_stored.length ; k += 1) { if( 0 == api_values['+j+']['+'\''+'value'+'\''+'].localeCompare(api_values_stored[k]['+'\''+'value'+'\''+'])){ api_values_stored[k][ '+'\''+ 'message'+'\''+'] = msg;addTable(api_values_stored, 5, '+'\''+'dataStored'+'\''+'); break;}} addTable(api_values,8,'+'\''+'myDynamicTable'+'\''+');');
+                   td.appendChild(buttonMsg);
                   }
                   tr.appendChild(td);
                 }
@@ -146,7 +159,7 @@
                     } else {
                     api_values.push(data);
                     }
-                    addTable(api_values,7,"myDynamicTable");
+                    addTable(api_values,8,"myDynamicTable");
                   })
                   .catch(function(error) {
                     console.log(error);
@@ -161,7 +174,7 @@
         getDataStock();
         $(document).ready(function(){
 
-            setInterval('getDataStock()', 1 * 1000);
+            setInterval('getDataStock()', 10 * 1000);
         });
         </script>
 

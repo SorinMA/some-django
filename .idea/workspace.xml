@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a57250a4-3250-4110-9538-88cfb61a0c80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/sm_user/stock_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sm_user/stock_page.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/sm_user/stock_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="112" selection-start-line="112" selection-end-line="112" />
+            <state relative-caret-position="445">
+              <caret line="126" column="397" selection-start-line="126" selection-start-column="397" selection-end-line="126" selection-end-column="397" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
               </folding>
@@ -29,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sm_user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="495">
               <caret line="46" column="140" selection-start-line="46" selection-start-column="140" selection-end-line="46" selection-end-column="140" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
@@ -158,12 +157,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1615" height="1054" extended-state="6" />
+    <frame x="64" y="-4" width="1617" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.08354271" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.19453207" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.18927445" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32970452" />
       <window_info anchor="bottom" id="Message" order="3" />
@@ -361,22 +361,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sm_user/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/sm_user/stock_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="46" column="140" selection-start-line="46" selection-start-column="140" selection-end-line="46" selection-end-column="140" />
+        <state relative-caret-position="445">
+          <caret line="126" column="397" selection-start-line="126" selection-start-column="397" selection-end-line="126" selection-end-column="397" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sm_user/stock_page.html">
+    <entry file="file://$PROJECT_DIR$/sm_user/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        <state relative-caret-position="495">
+          <caret line="46" column="140" selection-start-line="46" selection-start-column="140" selection-end-line="46" selection-end-column="140" />
           <folding>
-            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="e#24#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
