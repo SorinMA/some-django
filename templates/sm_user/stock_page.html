@@ -60,6 +60,42 @@
         </script>
 
         <script>
+            function addTable(api_values) {
+              document.getElementById("myDynamicTable").innerHTML = "";
+              var myTableDiv = document.getElementById("myDynamicTable");
+
+              var table = document.createElement('TABLE');
+              table.border = '1';
+
+              var tableBody = document.createElement('TBODY');
+              table.appendChild(tableBody);
+
+              for (var i = 0; i < 5; i++) {
+                var tr = document.createElement('TR');
+                tableBody.appendChild(tr);
+
+                for (var j = 0; j < api_values.length; j++) {
+                  var td = document.createElement('TD');
+                  td.width = '75';
+                  if(i == 0)
+                    td.appendChild(document.createTextNode(api_values[j]['value']));
+                  if(i == 1)
+                    td.appendChild(document.createTextNode(api_values[j]['RON']));
+                  if(i == 2)
+                    td.appendChild(document.createTextNode(api_values[j]['USD']));
+                  if(i == 3)
+                    td.appendChild(document.createTextNode(api_values[j]['CHF']));
+                  tr.appendChild(td);
+                }
+              }
+              myTableDiv.appendChild(table);
+            }
+        </script>
+
+        <script>
+
+               var increment = 0;
+               var api_values = [];
                function getDataStock(){
                   const url = '{% url 'stock_page_api'%}';
                   fetch(url)
@@ -71,10 +107,20 @@
                     document.querySelector('.CHF .value_CHF').innerHTML = data['CHF'];
                     document.querySelector('.date .value_date').innerHTML = data['value'];
                     curencyChart(data['RON'], data['USD'], data['CHF']);
+                    increment ++;
+                    if(increment > 10) {
+                    api_values.shift();
+                    api_values.push(data);
+                    } else {
+                    api_values.push(data);
+                    }
+                    addTable(api_values);
                   })
                   .catch(function(error) {
                     console.log(error);
                   });
+                console.log(api_values.length);
+                console.log(api_values[0]);
               }
 
         </script>
@@ -82,7 +128,8 @@
         <script type="text/javascript">
         getDataStock();
         $(document).ready(function(){
-            setInterval('getDataStock()', 300 * 1000);
+
+            setInterval('getDataStock()', 10 * 1000);
         });
         </script>
 
@@ -116,5 +163,6 @@
                   </tr>
 
         </table>
+        <div id="myDynamicTable"></div>
 
 {% endblock %}
