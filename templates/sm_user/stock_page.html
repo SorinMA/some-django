@@ -27,7 +27,10 @@
         <script>
             var increment = 0;
             var api_values = [];
+            var api_values_stored = [];
         </script>
+
+
 
         <script>
 
@@ -66,9 +69,9 @@
 
         <script>
 
-            function addTable(api_values) {
-              document.getElementById("myDynamicTable").innerHTML = "";
-              var myTableDiv = document.getElementById("myDynamicTable");
+            function addTable(api_values, rows, changes) {
+              document.getElementById(changes).innerHTML = "";
+              var myTableDiv = document.getElementById(changes);
 
               var table = document.createElement('TABLE');
               table.border = '1';
@@ -76,7 +79,7 @@
               var tableBody = document.createElement('TBODY');
               table.appendChild(tableBody);
 
-              for (var i = 0; i < 4; i++) {
+              for (var i = 0; i < rows; i++) {
                 var tr = document.createElement('TR');
                 tableBody.appendChild(tr);
 
@@ -91,18 +94,24 @@
                     td.appendChild(document.createTextNode(api_values[j]['USD']));
                   if(i == 3)
                     td.appendChild(document.createTextNode(api_values[j]['CHF']));
-                  /*if(i == 4) {
-                    var clickMeButton = document.createElement('button');
-                    clickMeButton.id = 'myButton'+j;
+                  if(i == 4) {
+                     var clickMeButton = document.createElement('button');
+                    clickMeButton.id = 'deleteButton'+j;
                     clickMeButton.innerHTML = 'Delete This' + j;
 
-                    function deleteThis(id) {
-                        console.log(id);
-                    }
-                    deleteThis(''+j + clickMeButton.id );
-                    clickMeButton.onclick = () => {deleteThis(j)};
+
+                    clickMeButton.onclick = new Function('delete_this' + j, 'api_values.splice('+j+',1); increment --;addTable(api_values,6,'+'\''+'myDynamicTable'+'\''+');');
                     td.appendChild(clickMeButton);
-                  }*/
+                  }
+                  if(i == 5) {
+                    var clickMeButton = document.createElement('button');
+                    clickMeButton.id = 'addButton'+j;
+                    clickMeButton.innerHTML = 'Add This' + j;
+
+
+                    clickMeButton.onclick = new Function('add_this' + j, 'let set = 0;for (let k = 0 ; k < api_values_stored.length ; k += 1) { if( 0 == api_values['+j+']['+'\''+'value'+'\''+'].localeCompare(api_values_stored[k]['+'\''+'value'+'\''+'])){set = 1;break;}} if(set == 0) { if(api_values_stored.length > 20) api_values_stored.shift(); api_values_stored.push(api_values['+j+']); addTable(api_values_stored, 4, '+'\''+'dataStored'+'\''+'); }');
+                    td.appendChild(clickMeButton);
+                  }
                   tr.appendChild(td);
                 }
               }
@@ -110,37 +119,7 @@
             }
 
 
-            function addDelete(nr) {
-              document.getElementById("myDynamicDelete").innerHTML = "";
-              var myTableDiv = document.getElementById("myDynamicDelete");
 
-              var table = document.createElement('TABLE');
-              table.border = '1';
-
-              var tableBody = document.createElement('TBODY');
-              table.appendChild(tableBody);
-
-
-                var tr = document.createElement('TR');
-                tableBody.appendChild(tr);
-
-                for (var j = 0; j < nr; j++) {
-                  var td = document.createElement('TD');
-                  td.width = '75';
-
-                    var clickMeButton = document.createElement('button');
-                    clickMeButton.id = 'myButton'+j;
-                    clickMeButton.innerHTML = 'Delete This' + j;
-
-
-                    clickMeButton.onclick = new Function('name' + j, 'api_values.splice('+j+',1); increment --;addDelete(increment);addTable(api_values);');
-                    td.appendChild(clickMeButton);
-
-                  tr.appendChild(td);
-                }
-
-              myTableDiv.appendChild(table);
-            }
         </script>
 
         <script>
@@ -158,14 +137,13 @@
                     document.querySelector('.date .value_date').innerHTML = data['value'];
                     curencyChart(data['RON'], data['USD'], data['CHF']);
                     increment ++;
-                    if(increment > 10) {
+                    if( api_values.length >= 10) {
                     api_values.shift();
                     api_values.push(data);
                     } else {
                     api_values.push(data);
-                    addDelete(increment);
                     }
-                    addTable(api_values);
+                    addTable(api_values,6,"myDynamicTable");
                   })
                   .catch(function(error) {
                     console.log(error);
@@ -180,7 +158,7 @@
         getDataStock();
         $(document).ready(function(){
 
-            setInterval('getDataStock()', 10 * 1000);
+            setInterval('getDataStock()', 1 * 1000);
         });
         </script>
 
@@ -215,6 +193,6 @@
 
         </table>
         <div id="myDynamicTable"></div>
-        <div id="myDynamicDelete"></div>
+        <div id="dataStored"></div>
 
 {% endblock %}
