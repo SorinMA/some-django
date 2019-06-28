@@ -5,10 +5,12 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from django.db.models.signals import post_save
+from django.utils import timezone
 
-from django.dispatch import receiver
+import datetime
 # Create your models here.
+
+
 
 class StockExpert(models.Model):
     stock_player = models.OneToOneField(User, related_name="stock_player", on_delete=models.CASCADE)
@@ -23,4 +25,9 @@ class StockMarket(models.Model):
     stock_msg = models.CharField(max_length=255, default="")
     stock_moment = models.CharField(max_length=30, default="--/--/--");
     stock_expert_player = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(default=timezone.now().astimezone(timezone.utc).replace(tzinfo=None))
 
+    def __str__(self):
+        return '%s - %s - %s - %s - %s' % (self.stock_RON, self.stock_USD, self.stock_CHF, self.stock_msg, self.stock_moment)
+    def get_RON(self):
+        return self.stock_RON

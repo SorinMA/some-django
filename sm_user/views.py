@@ -73,7 +73,17 @@ def stock_page_api_recive(request):
         except:
             print("UPSSSS")
             return HttpResponse("OKn t")
+        #StockMarket.objects.all().delete()  ups cmd
     return HttpResponse("OK")
+
+@login_required()
+def retrieve_strock_hist_db(request):
+    values = StockMarket.objects.all().filter(stock_expert_player = request.user)
+    print (values[0])
+    data = []
+    for i in values:
+        data.append(i.get_RON())
+    return JsonResponse(data, safe=False)
 
 def home_page(request):
     return render(request, 'sm_user/home_page.html', {'user' : request.user})
