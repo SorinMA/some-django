@@ -21,5 +21,6 @@ class StockMarket(models.Model):
     stock_USD = models.FloatField(null=False, default=0)
     stock_CHF = models.FloatField(null=False, default=0)
     stock_msg = models.CharField(max_length=255, default="")
-    stock_expert_player = models.ForeignKey(StockExpert, on_delete=models.CASCADE)
+    stock_moment = models.CharField(max_length=30, default="--/--/--");
+    stock_expert_player = models.ForeignKey(User, on_delete=models.CASCADE)
 

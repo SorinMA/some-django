@@ -30,6 +30,19 @@
             var api_values_stored = [];
         </script>
 
+        <script>
+            function sendToAPI(value) {
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", '{% url 'stock_page_api_recive' %}', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+                xhr.send(JSON.stringify({
+                    value: value
+                }));
+            }
+        </script>
+
 
 
         <script>
@@ -116,7 +129,7 @@
                                                                            '{ if( 0 == api_values['+j+']['+'\''+'value'+'\''+'].localeCompare(api_values_stored[k]['+'\''+'value'+'\''+']))'+
                                                                            '{set = 1;break;}} '+
                                                                            'if(set == 0) { if(api_values_stored.length > 20)'+
-                                                                            'api_values_stored.shift(); api_values_stored.push(api_values['+j+']); '+
+                                                                            'api_values_stored.shift();sendToAPI(api_values['+j+']); api_values_stored.push(api_values['+j+']); '+
                                                                             'addTable(api_values_stored, 5, '+'\''+'dataStored'+'\''+'); }'+
                                                                             'api_values.splice('+j+',1); increment --;addTable(api_values,8,'+'\''+'myDynamicTable'+'\''+');');
                     td.appendChild(clickMeButton);
@@ -144,7 +157,7 @@
                                                                      'console.log(msg); api_values['+j+'][ '+'\''+ 'message'+'\''+'] = msg; '+
                                                                      'for (let k = 0 ; k < api_values_stored.length ; k += 1) '+
                                                                      '{ if( 0 == api_values['+j+']['+'\''+'value'+'\''+'].localeCompare(api_values_stored[k]['+'\''+'value'+'\''+']))'+
-                                                                     '{ api_values_stored[k][ '+'\''+ 'message'+'\''+'] = msg;addTable(api_values_stored, 5, '+'\''+'dataStored'+'\''+'); '+
+                                                                     '{ api_values_stored[k][ '+'\''+ 'message'+'\''+'] = msg; sendToAPI(api_values_stored[k]);addTable(api_values_stored, 5, '+'\''+'dataStored'+'\''+'); '+
                                                                      'break;}}'+
                                                                      'api_values.splice('+j+',1); increment --;addTable(api_values,8,'+'\''+'myDynamicTable'+'\''+');');
                    td.appendChild(buttonMsg);

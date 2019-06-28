@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 
+from django.http import HttpResponse
 
 from django.contrib.auth.decorators import login_required
 
@@ -10,10 +11,16 @@ from .forms import SignUpForm
 
 import requests
 
+import json
+
 from time import gmtime, strftime
 
 from django.http import JsonResponse
+
+from .models import StockMarket
 # Create your views here.
+
+
 
 
 @login_required()
@@ -45,8 +52,28 @@ def stock_page_api(request):
         euro_to_chf = 0
 
     data = {'date' : date, 'RON' : euro_to_ron, 'USD' : euro_to_usd, 'CHF' : euro_to_chf, 'value' : strftime("%Y-%m-%d %H:%M:%S", gmtime())}
+
     return JsonResponse(data, safe=False)
 
+@login_required()
+def stock_page_api_recive(request):
+    if request.method == 'POST':
+        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa " + request.user.username + (request.body.decode('utf-8')))
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        print ((body['value'])['RON'] )
+        try:
+            stock_values =  StockMarket.objects.create(stock_expert_player = request.user,
+                                                   stock_RON = body['value']['RON'],
+                                                   stock_USD = body['value']['USD'],
+                                                   stock_CHF = body['value']['CHF'],
+                                                   stock_msg = body['value']['message'],
+                                                   stock_moment = body['value']['value'])
+            stock_values.save()
+        except:
+            print("UPSSSS")
+            return HttpResponse("OKn t")
+    return HttpResponse("OK")
 
 def home_page(request):
     return render(request, 'sm_user/home_page.html', {'user' : request.user})

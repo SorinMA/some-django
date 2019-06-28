@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 
-from .views import home_page, stock_page, sm_register, stock_page_api
+from .views import home_page, stock_page, sm_register, stock_page_api, stock_page_api_recive
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'stock_page$', stock_page, name="stock_page"),
     url(r'register$', sm_register, name="sm_register"),
     url(r'stock_page_api$', stock_page_api, name="stock_page_api"),
+    url(r'stock_page_api_recive$', stock_page_api_recive, name="stock_page_api_recive"),
 ]
