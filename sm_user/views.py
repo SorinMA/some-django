@@ -82,8 +82,17 @@ def retrieve_strock_hist_db(request):
     print (values[0])
     data = []
     for i in values:
-        data.append(i.get_RON())
-    return JsonResponse(data, safe=False)
+        from datetime import datetime
+        return_format = {
+            'RON': i.get_RON(),
+            'USD': i.get_USD(),
+            'CHF': i.get_CHF(),
+            'msg': i.get_msg(),
+            'moment': datetime.strptime(i.get_moment(), '%Y-%m-%d %H:%M:%S')
+        }
+        data.append(return_format)
+    api_resp = sorted(data, key=lambda k: k['moment'], reverse=True)
+    return JsonResponse(api_resp, safe=False)
 
 def home_page(request):
     return render(request, 'sm_user/home_page.html', {'user' : request.user})
