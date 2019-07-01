@@ -94,6 +94,9 @@ def retrieve_strock_hist_db(request):
     api_resp = sorted(data, key=lambda k: k['moment'], reverse=True)
     return JsonResponse(api_resp, safe=False)
 
+def stock_hist(request):
+    return render(request, 'sm_user/stock_hist.html', {'user': request.user})
+
 def home_page(request):
     return render(request, 'sm_user/home_page.html', {'user' : request.user})
 

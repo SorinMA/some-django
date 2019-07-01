@@ -1,0 +1,92 @@
+{% extends "web_app.html" %}
+
+
+
+{% block contentTOP %}
+    <div   class="navbar-form navbar-right">
+        <a class="navbar-brand" href="{% url 'stock_page' %}">Stock page</a>
+        <a class="navbar-brand" href="{% url 'sm_logout' %}">Logout</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+        <div class="jumbotron">
+
+            <h2>{{user.username}} curency hist.:</h2>
+
+
+
+
+        </div>
+
+        <script>
+
+            function addTable(api_values, rows, changes) {
+              document.getElementById(changes).innerHTML = "";
+              var myTableDiv = document.getElementById(changes);
+
+              var table = document.createElement('TABLE');
+              table.border = '1';
+
+              var tableBody = document.createElement('TBODY');
+              table.appendChild(tableBody);
+
+              for (var i = 0; i < rows; i++) {
+                var tr = document.createElement('TR');
+                tableBody.appendChild(tr);
+
+                for (var j = 0; j < api_values.length; j++) {
+                  var td = document.createElement('TD');
+                  td.width = '75';
+                  if(i == 0)
+                    td.appendChild(document.createTextNode(api_values[j]['moment']));
+                  if(i == 1)
+                    td.appendChild(document.createTextNode(api_values[j]['RON']));
+                  if(i == 2)
+                    td.appendChild(document.createTextNode(api_values[j]['USD']));
+                  if(i == 3)
+                    td.appendChild(document.createTextNode(api_values[j]['CHF']));
+                  if(i == 4)
+                    td.appendChild(document.createTextNode('info:'+api_values[j]['msg']));
+
+                  tr.appendChild(td);
+                }
+              }
+              myTableDiv.appendChild(table);
+            }
+
+
+
+        </script>
+
+        <script>
+
+
+               function getDataStock(){
+                  const url = '{% url 'retrieve_strock_hist_db'%}';
+                  fetch(url)
+                  .then((resp) => resp.json())
+                  .then(function(data) {
+
+                    addTable(data,5, "myDynamicTable");
+                  })
+                  .catch(function(error) {
+                    console.log(error);
+                  });
+
+              }
+              getDataStock();
+
+
+        </script>
+
+
+
+
+
+      <div id="myDynamicTable" style="max-height: 20%;max-width:100%;overflow: scroll;"></div>
+
+
+
+{% endblock %}
